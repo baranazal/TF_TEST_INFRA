@@ -23,9 +23,6 @@ This project provisions:
 ├── backend.tf              # S3 backend configuration
 ├── key_pair.tf             # SSH key pair generation and management
 ├── dev.tfvars              # Development environment variables
-├── .terraform.lock.hcl     # Terraform dependency lock file
-├── terraform.tfstate       # Local terraform state (when not using remote)
-├── terraform.tfstate.backup # Backup of local terraform state
 ├── .gitignore              # Git ignore file
 ├── modules/                # Reusable modules
 │   ├── vpc/                # VPC infrastructure
@@ -40,7 +37,6 @@ This project provisions:
 │       ├── main.tf         # S3 resources definition
 │       ├── variables.tf    # S3 module variables
 │       └── outputs.tf      # S3 module outputs
-├── ssh_keys/               # Generated SSH key files
 └── README.md               # This documentation
 ```
 
