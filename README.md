@@ -87,6 +87,39 @@ After the initial deployment:
 - Versioning and encryption enabled
 - DynamoDB table for state locking
 
+## Understanding Terraform Modules
+
+### What are Modules?
+
+Modules in Terraform are reusable, self-contained packages of Terraform configurations that manage a specific piece of infrastructure. Think of modules as functions in programming - they accept inputs (variables), create resources, and return outputs.
+
+Each module in this project consists of:
+- `main.tf`: Contains the resource definitions
+- `variables.tf`: Defines input parameters
+- `outputs.tf`: Specifies values to export for use by other configurations
+
+### Why We Use Modules
+
+1. **Reusability**: Write infrastructure code once and reuse it across multiple environments or projects.
+
+2. **Abstraction**: Hide complex resource configurations behind a simple interface. For example, our VPC module handles subnet creation, routing tables, and internet gateway configurations, but users only need to provide CIDR blocks.
+
+3. **Consistency**: Ensure all infrastructure follows the same patterns and best practices. Every EC2 instance created through our module has the same security baseline.
+
+4. **Maintainability**: When you need to update a component (e.g., add a new security rule), you only need to change it in one place.
+
+5. **Organization**: Modules create logical boundaries between different parts of infrastructure, making the codebase easier to understand and navigate.
+
+### Modules in this Project
+
+- **VPC Module**: Manages networking infrastructure including VPC, subnets, internet gateway, and routing.
+
+- **EC2 Module**: Handles compute resources including the EC2 instance, security groups, and associated configurations.
+
+- **S3 Module**: Provisions storage resources with appropriate security settings and access controls.
+
+By using modules, this project creates a clean separation of concerns and allows each infrastructure component to be developed and modified independently while maintaining consistency across the entire architecture.
+
 ## SSH Access Configuration
 
 ### Automatically Generated SSH Keys
